@@ -1,4 +1,4 @@
-export interface TodoWork {
+export interface Task {
     taskName: string;
-    deadline: number;
+    deadline: string;
 }
