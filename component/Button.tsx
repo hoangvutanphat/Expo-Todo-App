@@ -11,7 +11,7 @@ interface Props {
 
 export default function Button(props: Props) {
     const { label, theme, icon, onPress } = props
-    if (theme === "primary") {
+    if ("primary" === theme) {
         return (
             <Pressable style={[styles.button, styles.primary]}
                 onPress={onPress}>
@@ -39,20 +39,20 @@ export default function Button(props: Props) {
 
 const styles = StyleSheet.create({
     button: {
+        width: 100,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
         textAlign: 'center',
-        fontSize: 12,
-        padding: 2,
+        padding: 3,
         margin: 2
     },
     primary: {
         backgroundColor: '#00DFA2',
     },
     secondary: {
-        backgroundColor: '#F9E0BB',
+        backgroundColor: '#FFE7A0',
     },
     text: {
         padding: 10,
