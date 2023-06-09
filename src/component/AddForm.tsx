@@ -1,25 +1,32 @@
 import { StyleSheet, Text, View, TextInput, Pressable, ScrollView, SafeAreaView } from 'react-native';
-import TodoListItem from '../component/TodoListItem';
-import { useState } from 'react';
+import TodoListItem from './TodoListItem';
+import { useState, createContext } from 'react';
 import { Task } from '../interface/model';
 import React from 'react';
 
+
+
 export default function AddForm() {
-    const [tasks, setTasks] = useState<string>("")
+
+    const [taskName, setTaskName] = useState<string>("")
     const [deadline, setDeadline] = useState<string>("")
     const [todoList, setTodoList] = useState<Task[]>([])
 
+    const task = { taskName: taskName, deadline: deadline }
+
+
     const addTask = () => {
-        const task = { taskName: tasks, deadline: deadline }
         setTodoList([...todoList, task])
-        setTasks("")
+        setTaskName("")
         setDeadline("")
     }
 
     const handleCompleteTask = (taskCompleted: string) => {
         setTodoList(todoList.filter(works => works.taskName != taskCompleted))
     }
+    //const TaskContext = createContext({ task, handleCompleteTask })
     return (
+        // <TaskContext.Provider value={{ task, handleCompleteTask }}>
         <View>
             <View style={styles.workField}>
                 <Text style={styles.headerWorkField}>Todo APP</Text>
@@ -27,8 +34,8 @@ export default function AddForm() {
                     <TextInput
                         style={styles.inputWorkField}
                         placeholder='Work to do'
-                        value={tasks}
-                        onChangeText={text => setTasks(text)}>
+                        value={taskName}
+                        onChangeText={text => setTaskName(text)}>
                     </TextInput>
                     <TextInput
                         style={styles.inputWorkField}
@@ -40,7 +47,7 @@ export default function AddForm() {
                 <Pressable
                     style={styles.btnAdd}
                     onPress={addTask}>
-                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>ADD</Text>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: "#fff" }}>ADD</Text>
                 </Pressable>
             </View>
             <ScrollView style={styles.listItem}>
@@ -53,6 +60,7 @@ export default function AddForm() {
                 })}
             </ScrollView>
         </View>
+        // </TaskContext.Provider>
     )
 }
 const styles = StyleSheet.create({

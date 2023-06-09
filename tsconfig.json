@@ -11,7 +11,8 @@
     },
     "include": [
         "src",
-        "App.tsx"
+        "App.tsx",
+        "src/component"
     ],
     "extends": "expo/tsconfig.base"
 }

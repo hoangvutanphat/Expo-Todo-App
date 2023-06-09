@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, Pressable, StyleSheet, Modal, TextInput } from "react-native";
 import { Task } from "../interface/model";
 import Button from "./Button"
 import EditModal from "./EditModal"
+import TaskContext from "./AddForm"
 
 interface Props {
     task: Task,
     handleCompletedTask(completedTask: string): void
 }
-
+// export default function TodoListItem()
 export default function TodoListItem(props: Props) {
-    const { task, handleCompletedTask } = props;
+    // const { task, handleCompletedTask } = useContext(TaskContext);
 
+
+    const { task, handleCompletedTask } = props;
     const [stateShow, setStateShow] = useState(false)
 
     const toggleModal = () => { setStateShow(!stateShow) }
