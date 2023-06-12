@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import AddForm from './src/component/AddForm';
-import { Provider } from 'react-redux';
+
 
 
 export default function App() {
