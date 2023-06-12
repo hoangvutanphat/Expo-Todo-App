@@ -2,14 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import AddForm from './src/component/AddForm';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'
+import { store } from './src/app/store'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <AddForm></AddForm>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <AddForm></AddForm>
+        <StatusBar style="auto" />
+      </View>
+    </Provider>
   );
 }
 const styles = StyleSheet.create({
